@@ -4,7 +4,7 @@ files:
   - source: /
     destination: /home/www/flask_project
 hooks:
-  ApplicationStop:
+  BeforeInstall:
     - location: scripts/cleanup_folder.sh
       runas: root
   ApplicationStart:
