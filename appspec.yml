@@ -4,6 +4,9 @@ files:
   - source: /
     destination: /home/www/flask_project
 hooks:
+  ApplicationStop:
+    - location: scripts/cleanup_folder.sh
+      runas: root
   ApplicationStart:
     - location: scripts/restart_supervisor.sh
       runas: root
