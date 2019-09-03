@@ -1,1 +1,1 @@
-pip install -r ./scripts/requirements.txt
+pip install -r $PWD/requirements.txt
