@@ -1,5 +1,6 @@
 #!/bin/bash
 
-$PWD/deploy.sh
+sh $PWD/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deploy.sh
 echo "This is a test. I am going to use a long running process deploy.sh here."
-$PWD/sleep.sh
+sh $PWD/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/sleep.sh
+
