@@ -1,3 +1,3 @@
 #!/bin/bash
 
-supervisorctl restart flask_project
+./deploy.sh
