@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Sleeping for 30 seconds"
-sleep 240
+echo "Sleeping..."
+sleep 900
 echo "Woken up"
 
