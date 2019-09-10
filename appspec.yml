@@ -5,9 +5,9 @@ files:
     destination: /home/www/flask_project
 hooks:
   BeforeInstall:
-    - location: /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/scripts/cleanup_folder.sh
+    - location: scripts/cleanup_folder.sh
       runas: root
   ApplicationStart:
-    - location: /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/scripts/restart_supervisor.sh
+    - location: scripts/restart_supervisor.sh
       runas: root
       timeout: 30
