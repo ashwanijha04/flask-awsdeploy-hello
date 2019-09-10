@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+    - echo Logging in to ECR
+    - $(aws ecr get-login --registry-ids ${account_number} --no-include-email)
+    - REPOSITORY_URI=${account_number}.dkr.ecr.${aws_region}.amazonaws.com/${service_name}
+    - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+  build:
+    commands:
+      - echo Building dms-base 
+        
+  post_build:
+    commands:
+      - echo Pushing Docker image
+      - printf '[{"name":"post build completed","imageUri":"Some value"}]' > imagedefinitions.json
+artifacts:
+  files: 
+    - imagedefinitions.json
+    - appspec.yaml
+    - appspec.yml
