@@ -1,13 +1,9 @@
 version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /home/www/flask_project
-hooks:
-  BeforeInstall:
-    - location: scripts/cleanup_folder.sh
-      runas: root
-  ApplicationStart:
-    - location: scripts/restart_supervisor.sh
-      runas: root
-      timeout: 30
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:212099763728:task-definition/Nginx:3"
+        LoadBalancerInfo:
+          ContainerName: "nginx"
+          ContainerPort: 80
