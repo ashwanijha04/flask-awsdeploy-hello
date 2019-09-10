@@ -9,9 +9,6 @@ phases:
   pre_build:
     commands:
     - echo Logging in to ECR
-    - $(aws ecr get-login --registry-ids ${account_number} --no-include-email)
-    - REPOSITORY_URI=${account_number}.dkr.ecr.${aws_region}.amazonaws.com/${service_name}
-    - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
   build:
     commands:
       - echo Building dms-base 
